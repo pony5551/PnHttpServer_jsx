@@ -1,2 +1,3 @@
 # PnHttpServer_jsx
 使用Crosssocket和chakracore-delphi实现的一个javascript引擎的web服务器
+第一版可能有些不完善的地方请担待，另外请各自下载qdac库
