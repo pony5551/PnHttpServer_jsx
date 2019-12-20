@@ -1,0 +1,3 @@
+
+MAINICON ICON "WasmSample_Icon.ico"
+PLATFORMTARGETS RCDATA {3}

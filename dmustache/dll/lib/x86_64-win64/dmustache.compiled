@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Compiler Value="D:\fpcupdeluxe\fpc\bin\x86_64-win64\fpc.exe" Date="1316427217"/>
+  <Params Value=" -MObjFPC -Scghi -WR -O1 -g -gl -l -vewnhibq -Fid:\__develop2019\delphi\__project_delphi\PnHttpServer\dmustache\dll\lib\x86_64-win64 -Fud:\__develop2019\delphi\__project_delphi\PnHttpServer\dmustache\src -Fud:\__develop2019\delphi\__project_delphi\PnHttpServer\dmustache\dll\ -FUd:\__develop2019\delphi\__project_delphi\PnHttpServer\dmustache\dll\lib\x86_64-win64\ -FEd:\__develop2019\delphi\__project_delphi\PnHttpServer\dmustache\dll\ -od:\__develop2019\delphi\__project_delphi\PnHttpServer\dmustache\dll\dmustache.dll dmustache.lpr"/>
+</CONFIG>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="11"/>
+    <BuildModes Active="Release"/>
+    <Units Count="4">
+      <Unit0>
+        <Filename Value="dmustache.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <CursorPos X="13" Y="6"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="C:\fpcupdeluxe\lazarus\ide\lazarus.pp"/>
+        <UnitName Value="Lazarus"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="37"/>
+        <CursorPos X="3" Y="54"/>
+        <UsageCount Value="10"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="..\src\SynMustache.pas"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="730"/>
+        <CursorPos X="32" Y="749"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="..\src\SynCommons.pas"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="35077"/>
+        <CursorPos X="3" Y="35095"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit3>
+    </Units>
+    <JumpHistory Count="12" HistoryIndex="11">
+      <Position1>
+        <Filename Value="dmustache.lpr"/>
+        <Caret Line="29" Column="93"/>
+      </Position1>
+      <Position2>
+        <Filename Value="dmustache.lpr"/>
+        <Caret Line="18" Column="96"/>
+      </Position2>
+      <Position3>
+        <Filename Value="dmustache.lpr"/>
+        <Caret Line="13" Column="54"/>
+      </Position3>
+      <Position4>
+        <Filename Value="dmustache.lpr"/>
+        <Caret Line="14" Column="7"/>
+      </Position4>
+      <Position5>
+        <Filename Value="..\src\SynMustache.pas"/>
+        <Caret Line="749" Column="32" TopLine="732"/>
+      </Position5>
+      <Position6>
+        <Filename Value="dmustache.lpr"/>
+        <Caret Line="14" Column="7"/>
+      </Position6>
+      <Position7>
+        <Filename Value="..\src\SynMustache.pas"/>
+        <Caret Line="1107" Column="13" TopLine="1090"/>
+      </Position7>
+      <Position8>
+        <Filename Value="..\src\SynMustache.pas"/>
+        <Caret Line="1319" Column="46" TopLine="1302"/>
+      </Position8>
+      <Position9>
+        <Filename Value="..\src\SynMustache.pas"/>
+        <Caret Line="749" Column="32" TopLine="732"/>
+      </Position9>
+      <Position10>
+        <Filename Value="..\src\SynMustache.pas"/>
+        <Caret Line="1107" Column="13" TopLine="1090"/>
+      </Position10>
+      <Position11>
+        <Filename Value="dmustache.lpr"/>
+        <Caret Line="6" Column="13"/>
+      </Position11>
+      <Position12>
+        <Filename Value="..\src\SynCommons.pas"/>
+        <Caret Line="35095" Column="3" TopLine="35076"/>
+      </Position12>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>
