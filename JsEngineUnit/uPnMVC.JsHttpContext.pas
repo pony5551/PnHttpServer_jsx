@@ -46,34 +46,57 @@ type
     //KeepAlive
     function GetKeepAlive: JsValueRef;
     //Accept
+    function GetAccept: JsValueRef;
     //AcceptEncoding
+    function GetAcceptEncoding: JsValueRef;
     //AcceptLanguage
+    function GetAcceptLanguage: JsValueRef;
     //Referer
+    function GetReferer: JsValueRef;
     //UserAgent
-
+    function GetUserAgent: JsValueRef;
     //IfModifiedSince
-
+    function GetIfModifiedSince: JsValueRef;
     //IfNoneMatch
+    function GetIfNoneMatch: JsValueRef;
     //Range
+    function GetRange: JsValueRef;
     //IfRange
+    function GetIfRange: JsValueRef;
     //Authorization
+    function GetAuthorization: JsValueRef;
     //XForwardedFor
-
+    function GetXForwardedFor: JsValueRef;
     //ContentLength
-
+    function GetContentLength: JsValueRef;
     //HostName
+    function GetHostName: JsValueRef;
     //HostPort
-
+    function GetHostPort: JsValueRef;
     //ContentType
-    //RequestCmdLine
-    //RequestBoundary
-    //TransferEncoding
+    function GetContentType: JsValueRef;
     //ContentEncoding
+    function GetContentEncoding: JsValueRef;
+    //RequestBoundary
+    function GetRequestBoundary: JsValueRef;
+    //RequestCmdLine
+    function GetRequestCmdLine: JsValueRef;
     //RequestConnection
+    function GetRequestConnection: JsValueRef;
+    //TransferEncoding
+    function GetTransferEncoding: JsValueRef;
     //IsChunked
+    function GetIsChunked: JsValueRef;
     //IsMultiPartFormData
+    function GetIsMultiPartFormData: JsValueRef;
     //IsUrlEncodedFormData
+    function GetIsUrlEncodedFormData: JsValueRef;
     //PostDataSize
+    function GetPostDataSize: JsValueRef;
+    //PostData
+    function GetPostData: JsValueRef;
+    //RemoteAddr
+    function GetRemoteAddr: JsValueRef;
 
     //GetParams
     function GetParams(Args: PJsValueRef; ArgCount: Word): JsValueRef;
@@ -228,6 +251,159 @@ begin
   Result := BooleanToJsBoolean(FRequest.KeepAlive);
 end;
 
+function TJsHttpRequest.GetAccept: JsValueRef;
+begin
+  Result := StringToJsString(FRequest.Accept);
+end;
+
+function TJsHttpRequest.GetAcceptEncoding: JsValueRef;
+begin
+  Result := StringToJsString(FRequest.AcceptEncoding);
+end;
+
+function TJsHttpRequest.GetAcceptLanguage: JsValueRef;
+begin
+  Result := StringToJsString(FRequest.AcceptLanguage);
+end;
+
+function TJsHttpRequest.GetReferer: JsValueRef;
+begin
+  Result := StringToJsString(FRequest.Referer);
+end;
+
+function TJsHttpRequest.GetUserAgent: JsValueRef;
+begin
+  Result := StringToJsString(FRequest.UserAgent);
+end;
+
+function TJsHttpRequest.GetIfModifiedSince: JsValueRef;
+begin
+  Result := StringToJsString(DateTimeToStr(FRequest.IfModifiedSince));
+end;
+
+function TJsHttpRequest.GetIfNoneMatch: JsValueRef;
+begin
+  Result := StringToJsString(FRequest.IfNoneMatch);
+end;
+
+function TJsHttpRequest.GetRange: JsValueRef;
+begin
+  Result := StringToJsString(FRequest.Range);
+end;
+
+function TJsHttpRequest.GetIfRange: JsValueRef;
+begin
+  Result := StringToJsString(FRequest.IfRange);
+end;
+
+function TJsHttpRequest.GetAuthorization: JsValueRef;
+begin
+  Result := StringToJsString(FRequest.Authorization);
+end;
+
+function TJsHttpRequest.GetXForwardedFor: JsValueRef;
+begin
+  Result := StringToJsString(FRequest.XForwardedFor);
+end;
+
+function TJsHttpRequest.GetContentLength: JsValueRef;
+begin
+  Result := DoubleToJsNumber(FRequest.GetContentLength);
+end;
+
+function TJsHttpRequest.GetHostName: JsValueRef;
+begin
+  Result := StringToJsString(FRequest.HostName);
+end;
+
+function TJsHttpRequest.GetHostPort: JsValueRef;
+begin
+  Result := IntToJsNumber(FRequest.HostPort);
+end;
+
+function TJsHttpRequest.GetContentType: JsValueRef;
+begin
+  Result := StringToJsString(FRequest.ContentType);
+end;
+
+function TJsHttpRequest.GetContentEncoding: JsValueRef;
+begin
+  Result := StringToJsString(FRequest.ContentEncoding);
+end;
+
+function TJsHttpRequest.GetRequestBoundary: JsValueRef;
+begin
+  Result := StringToJsString(FRequest.RequestBoundary);
+end;
+
+function TJsHttpRequest.GetRequestCmdLine: JsValueRef;
+begin
+  Result := StringToJsString(FRequest.RequestCmdLine);
+end;
+
+function TJsHttpRequest.GetRequestConnection: JsValueRef;
+begin
+  Result := StringToJsString(FRequest.RequestConnection);
+end;
+
+function TJsHttpRequest.GetTransferEncoding: JsValueRef;
+begin
+  Result := StringToJsString(FRequest.TransferEncoding);
+end;
+
+function TJsHttpRequest.GetIsChunked: JsValueRef;
+begin
+  Result := BooleanToJsBoolean(FRequest.IsChunked);
+end;
+
+function TJsHttpRequest.GetIsMultiPartFormData: JsValueRef;
+begin
+  Result := BooleanToJsBoolean(FRequest.IsMultiPartFormData);
+end;
+
+function TJsHttpRequest.GetIsUrlEncodedFormData: JsValueRef;
+begin
+  Result := BooleanToJsBoolean(FRequest.IsUrlEncodedFormData);
+end;
+
+function TJsHttpRequest.GetPostDataSize: JsValueRef;
+begin
+  Result := DoubleToJsNumber(FRequest.PostDataSize);
+end;
+
+function TJsHttpRequest.GetPostData: JsValueRef;
+var
+  LStream: TBytesStream;
+  LStrStream: TStringStream;
+  sResult: string;
+begin
+  if FRequest = nil then
+  begin
+    Result := StringToJsString('');
+    Exit;
+  end;
+  if (FRequest.BodyType = btBinary) then
+  begin
+    LStream := TBytesStream(FRequest.Body);
+    LStrStream := TStringStream.Create;
+    try
+      LStrStream.CopyFrom(LStream, LStream.Size);
+      sResult := LStrStream.DataString;
+    finally
+      FreeAndNil(LStrStream);
+    end;
+  end
+  else begin
+    sResult := '';
+  end;
+  Result := StringToJsString(sResult);
+end;
+
+function TJsHttpRequest.GetRemoteAddr: JsValueRef;
+begin
+  Result := StringToJsString(FRequest.Connection.PeerAddr);
+end;
+
 function TJsHttpRequest.GetParams(Args: PJsValueRef; ArgCount: Word): JsValueRef;
 var
   sName,
@@ -288,7 +464,6 @@ begin
 //        JsTypedArray: ;
 //        JsDataView: ;
       end;
-      //Result := StringToJsString(sValue);
     end;
   end;
 end;
@@ -302,6 +477,33 @@ begin
   RegisterNamedProperty(AInstance, 'Version', False, False, @TJsHttpRequest.GetVersion, nil);
   RegisterNamedProperty(AInstance, 'BodyType', False, False, @TJsHttpRequest.GetBodyType, nil);
   RegisterNamedProperty(AInstance, 'KeepAlive', False, False, @TJsHttpRequest.GetKeepAlive, nil);
+  RegisterNamedProperty(AInstance, 'Accept', False, False, @TJsHttpRequest.GetAccept, nil);
+  RegisterNamedProperty(AInstance, 'AcceptEncoding', False, False, @TJsHttpRequest.GetAcceptEncoding, nil);
+  RegisterNamedProperty(AInstance, 'AcceptLanguage', False, False, @TJsHttpRequest.GetAcceptLanguage, nil);
+  RegisterNamedProperty(AInstance, 'Referer', False, False, @TJsHttpRequest.GetReferer, nil);
+  RegisterNamedProperty(AInstance, 'UserAgent', False, False, @TJsHttpRequest.GetUserAgent, nil);
+  RegisterNamedProperty(AInstance, 'IfModifiedSince', False, False, @TJsHttpRequest.GetIfModifiedSince, nil);
+  RegisterNamedProperty(AInstance, 'IfNoneMatch', False, False, @TJsHttpRequest.GetIfNoneMatch, nil);
+  RegisterNamedProperty(AInstance, 'Range', False, False, @TJsHttpRequest.GetRange, nil);
+  RegisterNamedProperty(AInstance, 'IfRange', False, False, @TJsHttpRequest.GetIfRange, nil);
+  RegisterNamedProperty(AInstance, 'Authorization', False, False, @TJsHttpRequest.GetAuthorization, nil);
+  RegisterNamedProperty(AInstance, 'XForwardedFor', False, False, @TJsHttpRequest.GetXForwardedFor, nil);
+  RegisterNamedProperty(AInstance, 'ContentLength', False, False, @TJsHttpRequest.GetContentLength, nil);
+  RegisterNamedProperty(AInstance, 'HostName', False, False, @TJsHttpRequest.GetHostName, nil);
+  RegisterNamedProperty(AInstance, 'HostPort', False, False, @TJsHttpRequest.GetHostPort, nil);
+  RegisterNamedProperty(AInstance, 'ContentType', False, False, @TJsHttpRequest.GetContentType, nil);
+  RegisterNamedProperty(AInstance, 'ContentEncoding', False, False, @TJsHttpRequest.GetContentEncoding, nil);
+  RegisterNamedProperty(AInstance, 'RequestBoundary', False, False, @TJsHttpRequest.GetRequestBoundary, nil);
+  RegisterNamedProperty(AInstance, 'RequestCmdLine', False, False, @TJsHttpRequest.GetRequestCmdLine, nil);
+  RegisterNamedProperty(AInstance, 'RequestConnection', False, False, @TJsHttpRequest.GetRequestConnection, nil);
+  RegisterNamedProperty(AInstance, 'TransferEncoding', False, False, @TJsHttpRequest.GetTransferEncoding, nil);
+  RegisterNamedProperty(AInstance, 'IsChunked', False, False, @TJsHttpRequest.GetIsChunked, nil);
+  RegisterNamedProperty(AInstance, 'IsMultiPartFormData', False, False, @TJsHttpRequest.GetIsMultiPartFormData, nil);
+  RegisterNamedProperty(AInstance, 'IsUrlEncodedFormData', False, False, @TJsHttpRequest.GetIsUrlEncodedFormData, nil);
+  RegisterNamedProperty(AInstance, 'PostDataSize', False, False, @TJsHttpRequest.GetPostDataSize, nil);
+  RegisterNamedProperty(AInstance, 'PostData', False, False, @TJsHttpRequest.GetPostData, nil);
+  RegisterNamedProperty(AInstance, 'RemoteAddr', False, False, @TJsHttpRequest.GetRemoteAddr, nil);
+
 //  RegisterNamedProperty(AInstance, 'ContentType', False, False, @TJsHttpResponse.GetContentType, @TJsHttpResponse.SetContentType);
 end;
 
